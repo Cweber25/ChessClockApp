@@ -46,45 +46,35 @@ public class settings extends AppCompatActivity {
         timeV1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ph = timeV1.getText().toString();
-                //timePH = 6000;
-                changeTime(ph);
+                changeTime(1);
             }
         });
 
         timeV2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ph = timeV2.getText().toString();
-                //timePH = 12000;
-                changeTime(ph);
+                changeTime(2);
             }
         });
 
         timeV3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ph = timeV3.getText().toString();
-                //timePH = 18000;
-                changeTime(ph);
+                changeTime(3);
             }
         });
 
         timeV5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ph = timeV10.getText().toString();
-                //timePH = 30000;
-                changeTime(ph);
+                changeTime(5);
             }
         });
 
         timeV10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ph = timeV10.getText().toString();
-                //timePH = 60000;
-                changeTime(ph);
+                changeTime(10);
 
             }
         });
@@ -92,10 +82,7 @@ public class settings extends AppCompatActivity {
         timeV30.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ph = timeV30.getText().toString();
-                //timePH = 180000;
-                changeTime(ph);
-
+                changeTime(30);
             }
         });
 
@@ -103,7 +90,7 @@ public class settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String ph = customT.getText().toString();
-                changeTime(ph);
+                //changeTime(ph);
             }
         });
 
@@ -120,10 +107,8 @@ public class settings extends AppCompatActivity {
 
 
 
-    public void changeTime(String a){
-        String aHelp = a;
-        int n = Integer.parseInt(a);
-        timePH = n * 6000;
-        currentT.setText(aHelp + " " + timePH);
+    public void changeTime(int a){
+        timePH = a * 6000;
+        currentT.setText(a + ":00");
     }
 }
