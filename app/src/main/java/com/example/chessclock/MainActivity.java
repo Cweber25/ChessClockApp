@@ -21,17 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private Button draw;
 
 
+
     private CountDownTimer countDownTimer;
     private CountDownTimer countDownTimer2;
-    private long timeLeftInMillieseconds = 600000; //10 mins
-    private long timeLeftInMillieseconds2 = 600000; //10 mins
+    private long timeLeftInMillieseconds; //10 mins
+    private long timeLeftInMillieseconds2; //10 mins
     private boolean timerRunning;
-    private boolean timer2Running = true;
+    private boolean timer2Running = false;
     private double whiteCounter;
     private double blackCounter;
     private int count = 0;
     private long newTime;
     private int i = 0;
+
+
+
 
 
 
@@ -48,10 +52,18 @@ public class MainActivity extends AppCompatActivity {
         draw = findViewById(R.id.draw);
         whiteScore = findViewById(R.id.scoreWhite);
         blackScore = findViewById(R.id.scoreBlack);
+        String u_value=getIntent().getStringExtra("ct");
 
-        //newTime = getIntent().getExtras().getLong("ct");
-        //timeLeftInMillieseconds = newTime;
 
+        if(timeLeftInMillieseconds != 0) {
+            int a = Integer.parseInt(u_value);
+            timeLeftInMillieseconds = a;
+            timeLeftInMillieseconds2 = a;
+
+        } else {
+            timeLeftInMillieseconds = 600000; //10 mins
+            timeLeftInMillieseconds2 = 600000; //10 mins
+        }
 
 
 
@@ -111,12 +123,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void startStop() {
-        if(timerRunning) {
-            stopTimer();
+        if (timer2Running) {
+
         } else {
-            startTimer();
+            i++;
+            if (timerRunning) {
+                stopTimer();
+            } else {
+                startTimer();
+            }
         }
-        }
+    }
 
     public void startStop2() {
         if(timer2Running) {
@@ -142,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-        countdownButton.setText("Pause");
+        //countdownButton.setText("Pause");
         timerRunning = true;
 
         }
@@ -166,10 +183,15 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
 
             }
-        }.start();}
+        }.start();
+
+        timer2Running = true;
+
+    }
 
     public void stopTimer2() {
         countDownTimer2.cancel();
+        timer2Running = false;
         //countdownButton.setText("Start");
 
     }
